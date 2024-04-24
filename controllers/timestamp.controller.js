@@ -2,7 +2,6 @@
 const timeStamp = async (req, res) => {
     if (!req.params.date) {
         const date = new Date()
-        const utc = formatDate(date)
         res.json({
             unix: Date.parse(date),
             utc: utc
@@ -13,7 +12,6 @@ const timeStamp = async (req, res) => {
             if (isNaN(date.getTime())) {
                 res.json({ error: 'Invalid Date' })
             } else {
-                const utc = formatDate(date)
                 res.json({
                     unix: date.getTime(),
                     utc: date.toUTCString()
