@@ -11,15 +11,16 @@ const timestampRouter = require('./routes/timestamp.route')
 var cors = require('cors');
 app.use(cors({optionsSuccessStatus: 200}));  // some legacy browsers choke on 204
 
+app.use('/api', timestampRouter)
+
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
-app.get("/", function (req, res) {
+app.get("/api", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-app.use('/api', timestampRouter)
 
 // Listen on port set in environment variable or default to 3000
 var listener = app.listen(process.env.PORT || 3000, function () {
