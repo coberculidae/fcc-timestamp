@@ -1,4 +1,3 @@
-const formatDate = require('../services/formatTime')
 
 const timeStamp = async (req, res) => {
     if (!req.params.date) {
@@ -16,8 +15,8 @@ const timeStamp = async (req, res) => {
             } else {
                 const utc = formatDate(date)
                 res.json({
-                    unix: Date.parse(date),
-                    utc: utc
+                    unix: date.getTime(),
+                    utc: date.toUTCString()
                 })
             }
         } else {
@@ -28,8 +27,8 @@ const timeStamp = async (req, res) => {
             } else {
                 const utc = formatDate(date);
                 res.json({
-                    unix: unix,
-                    utc: utc
+                    unix: date.getTime(),
+                    utc: date.toUTCString()
                 })
             }
         }
