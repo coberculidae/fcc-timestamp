@@ -18,7 +18,6 @@ const timeStamp = async (req, res) => {
                 })
             }
         } else {
-            const unix = Number(req.params.date)
             const date = new Date(unix);
             if (isNaN(date.getTime())) {
                 res.json({ error: 'Invalid Date' })
