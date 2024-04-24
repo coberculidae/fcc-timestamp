@@ -4,7 +4,7 @@ const timeStamp = async (req, res) => {
         const date = new Date()
         res.json({
             unix: Date.parse(date),
-            utc: utc
+            utc: date.toUTCString()
         })
     } else {
         if (req.params.date.includes('-')) {
